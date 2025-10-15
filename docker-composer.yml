@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  finanzas_db:
+  cargadorxls_db:
     image: mysql:8.0
     container_name: finanzas_db
     restart: unless-stopped
