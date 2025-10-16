@@ -1,14 +1,24 @@
+# Core FastAPI stack
 fastapi==0.104.1
 uvicorn==0.24.0
 sqlalchemy==2.0.23
+
+# Base de datos MySQL
 mysql-connector-python==8.2.0
-python-multipart==0.0.6
-openpyxl==3.1.2
-pydantic==2.5.0
+
+# Validación y configuración
 pydantic[email]==2.5.0
 pydantic-settings==2.1.0
 python-dotenv==1.0.0
+
+# Manejo de archivos y formularios
+python-multipart==0.0.6
 aiofiles==23.2.1
-uvloop==0.19.0
-httpx==0.25.2
+
+# Procesamiento de Excel
+openpyxl==3.1.2
 xlrd==2.0.1
+
+# Red y rendimiento
+httpx==0.25.2
+uvloop==0.19.0
