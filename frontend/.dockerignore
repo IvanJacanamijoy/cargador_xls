@@ -1,0 +1,29 @@
+# Node modules y dependencias locales
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos de configuración del editor
+.vscode
+.idea
+*.swp
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de build previos
+dist
+build
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak

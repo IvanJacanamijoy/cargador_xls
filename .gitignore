@@ -1,0 +1,50 @@
+# ────────────── GLOBAL ──────────────
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+
+# ────────────── ENTORNOS ──────────────
+.env
+.env.local
+.env.*.local
+*.env
+
+# ────────────── DOCKER ──────────────
+docker-compose.override.yml
+**/__pycache__/
+**/*.py[cod]
+**/*.sqlite3
+/tmp/uploads/
+
+# ────────────── BACKEND (FastAPI) ──────────────
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.coverage
+backend/.venv/
+backend/venv/
+backend/.vscode/
+backend/.idea/
+backend/*.db
+backend/*.sqlite3
+
+# ────────────── FRONTEND (React + Tailwind v4.1) ──────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.vscode/
+frontend/.idea/
+frontend/.DS_Store
+frontend/npm-debug.log
+frontend/yarn-debug.log
+frontend/yarn-error.log
+frontend/pnpm-debug.log
+
+# ────────────── VOLUMENES Y BUILDS ──────────────
+mysql_data/
+__pycache__/
+build/
+dist/
