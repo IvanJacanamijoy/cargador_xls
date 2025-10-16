@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  # Base de datos MySQL
+  cargadorxls_db:
+    image: mysql:8.0
+    container_name: cargadorxls_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: cargadorxls_db
+      MYSQL_PASSWORD: dbpssword
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - red_backend_db
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  # Backend FastAPI
+  cargadorxls_backend:
+    build: ./backend
+    container_name: cargadorxls_backend
+    env_file: ./backend/.env
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      cargadorxls_db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /tmp/uploads:/tmp/uploads
+    networks:
+      - red_backend_db
+      - red_frontend_backend
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Frontend React
+
+volumes:
+  mysql_data:
+
+
+networks:
+  red_backend_db:
+    internal: true
+  red_frontend_backend:
+    driver: bridge
